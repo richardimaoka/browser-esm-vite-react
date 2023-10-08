@@ -1,7 +1,7 @@
 {
   "name": "browser-esm-vite-react",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "simpleserver": "node ../node_modules/yaserver/bin/yaserver --root ./dist --port 9999"
