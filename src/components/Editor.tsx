@@ -49,8 +49,32 @@ export const Editor: VFC = () => {
               preference: [monaco.editor.ContentWidgetPositionPreference.EXACT],
             };
           },
+          // allowEditorOverflow: true,
         };
-        createdEditor.addContentWidget(contentWidget);
+        // createdEditor.addContentWidget(contentWidget);
+
+        const overlayWidget = {
+          getId: function () {
+            return "my.content.widget";
+          },
+          getDomNode: function () {
+            const domNode = document.createElement("div");
+            domNode.innerHTML = "My content widget";
+            domNode.style.background = "grey";
+            domNode.style.opacity = "0.6";
+            domNode.style.width = "500px";
+            domNode.style.height = `${50}px`;
+            domNode.hidden = true;
+            return domNode;
+          },
+          getPosition: function () {
+            return {
+              preference:
+                monaco.editor.OverlayWidgetPositionPreference.TOP_CENTER,
+            };
+          },
+        };
+        createdEditor.addOverlayWidget(overlayWidget);
 
         return createdEditor;
       });
